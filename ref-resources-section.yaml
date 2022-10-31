@@ -1,0 +1,202 @@
+Resources:
+  # Create VPC
+  VPC: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock:
+      EnableDnsHostnames:
+      EnableDnsSupport:
+      InstanceTenancy:
+      Tags:
+        - Key:
+          Value:
+
+  # Create Internet Gateway
+  InternetGateway: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key:
+          Value:
+
+  # Attach Internet Gateway to VPC
+  InternetGatewayAttachment: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId:
+      VpcId:
+
+  # Create Public Subnet1
+  PublicSubnet1: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Public Subnet2
+  PublicSubnet2: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Route Table
+  PublicRouteTable: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::RouteTable
+    Properties:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Add a Public Route to the Route Table
+  PublicRoute: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock:
+      GatewayId:
+      RouteTableId:
+
+  # Associate Public Subnet1 with Public Route Table
+  PublicSubnet1RouteTableAssociation: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+      SubnetId:
+
+  # Associate Public Subnet2 with Public Route Table
+  PublicSubnet2RouteTableAssociation: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+      SubnetId:
+
+  # Create Private Subnet1
+  PrivateSubnet1: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Private Subnet2
+  PrivateSubnet2: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Private Subnet3
+  PrivateSubnet3: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Private Subnet4
+  PrivateSubnet4: # Remember, this logical name can be anything you call it
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+      CidrBlock:
+      MapPublicIpOnLaunch:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Security Group for the Application Load Balancer
+  ALBSecurityGroup: # Remember, this logical name can be anything you call it
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription:
+      SecurityGroupIngress:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          CidrIp:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          CidrIp:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Security Group for the Bastion Host aka Jump Box
+  SSHSecurityGroup: # Remember, this logical name can be anything you call it
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription:
+      SecurityGroupIngress:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          CidrIp:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Security Group for the Web Server
+  WebServerSecurityGroup: # Remember, this logical name can be anything you call it
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription:
+      SecurityGroupIngress:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          SourceSecurityGroupId:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          SourceSecurityGroupId:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          SourceSecurityGroupId:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
+
+  # Create Security Group for the DataBase
+  DataBaseSecurityGroup: # Remember, this logical name can be anything you call it
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription:
+      SecurityGroupIngress:
+        - IpProtocol:
+          FromPort:
+          ToPort:
+          SourceSecurityGroupId:
+      Tags:
+        - Key:
+          Value:
+      VpcId:
