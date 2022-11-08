@@ -1,23 +1,20 @@
 Metadata:
-  AWS::CloudFormation::Interface: 
+  AWS::CloudFormation::Interface:
     ParameterGroups:
-      - 
-        Label: 
+      - Label:
           default: "VPC CIDR"
-        Parameters: 
-          - VpcCIDR
-      - 
-        Label: 
+        Parameters:
+          - VpcCIDR # This must be same as the Logical Names you give to resources
+      - Label:
           default: "Subnet CIDR"
         Parameters:
-          - PublicSubnet1CIDR
+          - PublicSubnet1CIDR # This must be same as the Logical Names you give to resources
           - PublicSubnet2CIDR
           - PrivateSubnet1CIDR
           - PrivateSubnet2CIDR
           - PrivateSubnet3CIDR
           - PrivateSubnet4CIDR
-      - 
-        Label: 
+      - Label:
           default: "SSH CIDR"
-        Parameters: 
+        Parameters:
           - SSHLocation
