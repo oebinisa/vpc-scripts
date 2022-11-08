@@ -1,12 +1,13 @@
-# VPC Creation CloudFormation Scripts
+# AWS CloudFormation Scripts
 
-# Create a VPC with:
+# 1. Creating a VPC Using CloudFormation:
 
 - Public and Private Subnets
 - In 2 different AZs
-  vpc.yaml
+  - Script: vpc.yaml
+  - Architecture Diagram: vpc-with-public-and-private-subnets.jpg
 
-# VPC Creation Steps - CloudFormation Resources Section:
+VPC Creation Steps - CloudFormation Resources Section:
 
 1. Create VPC
 2. Create Internet Gateway
@@ -21,3 +22,7 @@
    2. SSH
    3. EC2
    4. RDS
+
+# 2. Creating a Nat Gateway Using CloudFormation:
+
+- Public and Private Subnets
