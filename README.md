@@ -7,7 +7,7 @@
   - Script: vpc.yaml
   - Architecture Diagram: vpc-with-public-and-private-subnets.jpg
 
-VPC Creation Steps - CloudFormation Resources Section:
+VPC Creation Steps:
 
 1. Create VPC
 2. Create Internet Gateway
@@ -25,4 +25,18 @@ VPC Creation Steps - CloudFormation Resources Section:
 
 # 2. Creating a Nat Gateway Using CloudFormation:
 
-- Public and Private Subnets
+Warning:
+
+Running a NAT Gateway all the time is going to be very expensive. AWS charge per hour for a NAT Gateway.
+
+The purpose for the NAT Gateways in this video is for updates and/or patches, therefore only launch your NAT Gateway stack when you are performing those actions, otherwise keep this stack off!
+
+NB: This will utilize the VPC Stack from (1) above.
+
+Creation Steps:
+
+1. Allocate Elastic IP Address
+2. Create Nat Gateway in each Public Subnets
+3. Create a Private Route Table
+4. Add a route to point internet-bound traffic to Nat Gateway
+5. Associate Private Subnets with Private Route Table

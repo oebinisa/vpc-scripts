@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: This template creates a nat gateway in each public subnet
+
+Parameters:
+  ExportVpcStackName:
+    Description: The name of the vpc stack that exports values
+    Type: String
+
+Resources:
+  # Allocate Elastic IP Address (EIP 1)
+  NatGateway1EIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: VPC
+      Tags:
+        - Key: Name
+          Value: EIP 1
+
+  # Allocate Elastic IP Address (EIP 2)
+  NatGateway2EIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: VPC
+      Tags:
+        - Key: Name
+          Value: EIP 2
+
+  # Create Nat Gateway 1 in Public Subnet 1
+  NatGateway1:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatGateway1EIP.AllocationId
+      SubnetId:
+      Tags:
+        - Key:
+          Value:
+
+  # Create Nat Gateway 2 in Public Subnet 2
+  NatGateway2:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatGateway1EIP.AllocationId
+      SubnetId:
+      Tags:
+        - Key:
+          Value:
