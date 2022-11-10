@@ -108,7 +108,7 @@ Resources:
       SubnetId:
         Fn::ImportValue: !Sub ${ExportVpcStackName}-PrivateSubnet2
 
-  # Associate Private Subnet 4 with Private Route Table 2
+  # Associate Private Subnet 4 with Private Route Table 2.
   PrivateSubnet4RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:

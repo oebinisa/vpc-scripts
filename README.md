@@ -26,9 +26,7 @@ VPC Creation Steps:
 # 2. Creating a Nat Gateway Using CloudFormation:
 
 Warning:
-
 Running a NAT Gateway all the time is going to be very expensive. AWS charge per hour for a NAT Gateway.
-
 The purpose for the NAT Gateways in this video is for updates and/or patches, therefore only launch your NAT Gateway stack when you are performing those actions, otherwise keep this stack off!
 
 NB: This will utilize the VPC Stack from (1) above.

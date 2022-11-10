@@ -90,7 +90,7 @@ Resources:
         - Key: Name
           Value: Test IGW
 
-  # Attach Internet Gateway to VPC
+  # Attach Internet Gateway to VPC.
   InternetGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:

@@ -1,5 +1,5 @@
 Resources:
-# Allocate Elastic IP Address (EIP 1)
+  # Allocate Elastic IP Address (EIP 1)
   NatGateway1EIP:
     Type: AWS::EC2::EIP
     Properties:
@@ -8,7 +8,7 @@ Resources:
         - Key:
           Value:
 
-# Allocate Elastic IP Address (EIP 2)
+  # Allocate Elastic IP Address (EIP 2)
   NatGateway2EIP:
     Type: AWS::EC2::EIP
     Properties:
@@ -17,7 +17,7 @@ Resources:
         - Key:
           Value:
 
-# Create Nat Gateway 1 in Public Subnet 1    
+  # Create Nat Gateway 1 in Public Subnet 1
   NatGateway1:
     Type: AWS::EC2::NatGateway
     Properties:
@@ -27,7 +27,7 @@ Resources:
         - Key:
           Value:
 
-# Create Nat Gateway 2 in Public Subnet 2
+  # Create Nat Gateway 2 in Public Subnet 2
   NatGateway2:
     Type: AWS::EC2::NatGateway
     Properties:
@@ -37,7 +37,7 @@ Resources:
         - Key:
           Value:
 
-# Create Private Route Table 1 
+  # Create Private Route Table 1
   PrivateRouteTable1:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -46,29 +46,29 @@ Resources:
           Value:
       VpcId:
 
-# Add a route to point internet-bound traffic to Nat Gateway 1      
+  # Add a route to point internet-bound traffic to Nat Gateway 1
   PrivateRoute1:
     Type: AWS::EC2::Route
     Properties:
       DestinationCidrBlock:
-      NatGatewayId: 
+      NatGatewayId:
       RouteTableId:
 
-# Associate Private Subnet 1 with Private Route Table 1
+  # Associate Private Subnet 1 with Private Route Table 1
   PrivateSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
       SubnetId:
 
-# Associate Private Subnet 3 with Private Route Table 1
+  # Associate Private Subnet 3 with Private Route Table 1
   PrivateSubnet3RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
       SubnetId:
 
-# Create Private Route Table 2     
+  # Create Private Route Table 2
   PrivateRouteTable2:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -77,7 +77,7 @@ Resources:
           Value:
       VpcId:
 
-# Add a route to point internet-bound traffic to Nat Gateway 2         
+  # Add a route to point internet-bound traffic to Nat Gateway 2
   PrivateRoute2:
     Type: AWS::EC2::Route
     Properties:
@@ -85,14 +85,14 @@ Resources:
       NatGatewayId:
       RouteTableId:
 
-# Associate Private Subnet 2 with Private Route Table 2
+  # Associate Private Subnet 2 with Private Route Table 2
   PrivateSubnet2RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
       SubnetId:
 
-# Associate Private Subnet 4 with Private Route Table 2
+  # Associate Private Subnet 4 with Private Route Table 2
   PrivateSubnet4RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
