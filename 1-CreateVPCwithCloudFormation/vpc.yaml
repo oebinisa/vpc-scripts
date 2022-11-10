@@ -254,7 +254,7 @@ Resources:
       VpcId: !Ref VPC
 
   # Create Security Group for the DataBase
-  DataBaseSecurityGroup: # Remember, this logical name can be anything you call it
+  DatabaseSecurityGroup: # Remember, this logical name can be anything you call it
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupDescription: Open database for access
@@ -330,8 +330,8 @@ Outputs:
       Name: !Sub ${AWS::StackName}-WebServerSecurityGroup
     Value: !Ref WebServerSecurityGroup
 
-  DataBaseSecurityGroup:
+  DatabaseSecurityGroup:
     Description: Database Security Group ID
     Export:
-      Name: !Sub ${AWS::StackName}-DataBaseSecurityGroup
-    Value: !Ref DataBaseSecurityGroup
+      Name: !Sub ${AWS::StackName}-DatabaseSecurityGroup
+    Value: !Ref DatabaseSecurityGroup

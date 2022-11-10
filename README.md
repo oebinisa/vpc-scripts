@@ -38,3 +38,8 @@ Creation Steps:
 3. Create a Private Route Table
 4. Add a route to point internet-bound traffic to Nat Gateway
 5. Associate Private Subnets with Private Route Table
+
+# 3. Creating an RDS Database Using CloudFormation
+
+- This template creates an RDS database with MySQL Engine
+- It takes its outputs from (1) VPC Creation above
