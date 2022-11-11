@@ -29,7 +29,7 @@ Warning:
 Running a NAT Gateway all the time is going to be very expensive. AWS charge per hour for a NAT Gateway.
 The purpose for the NAT Gateways in this video is for updates and/or patches, therefore only launch your NAT Gateway stack when you are performing those actions, otherwise keep this stack off!
 
-NB: This will utilize the VPC Stack from (1) above.
+- Dependencies: VPC stack - (1) above
 
 Creation Steps:
 
@@ -42,8 +42,42 @@ Creation Steps:
 # 3. Creating an RDS Database Using CloudFormation
 
 - This template creates an RDS database with MySQL Engine
+- Dependencies: VPC stack - (1) above
 - It takes its outputs from (1) VPC Creation above
+- After uploading the stack to the CloudFormation console, enter the following values into the following fields:
+  - Specify stack details:
+    - Stack name: rds
+    - Export VPC Stack Name: vpc
 
 # 4. Creating an ALB Using CloudFormation
 
 - This template creates an Application Load Balancer
+- Dependencies: VPC stack - (1) above
+- After uploading the stack to the CloudFormation console, enter the following values into the following fields:
+  - Specify stack details:
+    - Stack name: alb
+  - Parameters:
+    - Certificate Arn: Generate and copy/paste your site/project ARN from AWS Certificate Manager
+    - Export VPC Stack Name: vpc
+
+# 5. Add EC2 Instances to ALB Target Group Using CloudFormation
+
+- This is a follow up on (4) above - Creating an ALB Using CloudFormation
+- This demonstrates how to add single EC2 instance to the Target Group of the ALB (Application Load Balancer)
+- Two EC2 instances were added to the Target Group here
+- Dependencies: VPC stack - (1) above
+- After uploading the stack to the CloudFormation console, enter the following values into the following fields:
+  - Specify stack details:
+    - Stack name: alb
+  - Parameters:
+    - Certificate Arn: Generate and copy/paste your site/project ARN from AWS Certificate Manager
+    - Export VPC Stack Name: vpc
+    - EC2 Parameters: Enter AmazonImageID
+    - KeyName: Select your pre-created EC2 KeyPair
+
+Creation Steps:
+
+1. Create the EC2 instance you intend to add to the ALB Target Group
+   Template: ec2-reference.yaml
+2. Merge the script with alb.yaml from (4) above
+3. Expand the alb.yaml to allow for creation of 2 EC2 instances
