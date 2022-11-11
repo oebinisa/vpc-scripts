@@ -43,3 +43,7 @@ Creation Steps:
 
 - This template creates an RDS database with MySQL Engine
 - It takes its outputs from (1) VPC Creation above
+
+# 4. Creating an ALB Using CloudFormation
+
+- This template creates an Application Load Balancer
