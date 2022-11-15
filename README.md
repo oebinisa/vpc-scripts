@@ -81,3 +81,20 @@ Creation Steps:
    Template: ec2-reference.yaml
 2. Merge the script with alb.yaml from (4) above
 3. Expand the alb.yaml to allow for creation of 2 EC2 instances
+
+# 6. Creating an Auto Scaling Group (ASG) Using CloudFormation
+
+- This template creates an Auto Scaling Group using CloudFormation
+- Dependencies:
+  - VPC stack - (1) above
+  - ALB - (4) above
+  - ALB Target Group - (5) above
+- After uploading the stack to the CloudFormation console, enter the following values into the following fields:
+  - Specify stack details:
+    - Stack name: asg
+  - Parameters:
+    - Export VPC Stack Name: vpc
+    - Export ALB Stack Name: alb
+    - Email Address: Enter Operator Email Address
+    - Image ID: Enter AmazonImageID
+    - EC2 KeyPair: Select your pre-created EC2 KeyPair

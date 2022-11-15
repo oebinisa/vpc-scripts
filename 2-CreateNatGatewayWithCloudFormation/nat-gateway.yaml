@@ -100,7 +100,7 @@ Resources:
       NatGatewayId: !Ref NatGateway2
       RouteTableId: !Ref PrivateRouteTable2
 
-  # Associate Private Subnet 2 with Private Route Table 2
+  # Associate Private Subnet 2 with Private Route Table 2.
   PrivateSubnet2RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
